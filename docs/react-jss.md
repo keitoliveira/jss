@@ -304,6 +304,46 @@ const App = () => (
 )
 ```
 
+If you want to use inherited theming object, `useStyles` is a lean alternative for `createUseStyle` that no need to pass `useTheme` and still allowing custom theme when needed as well.
+
+```javascript
+import React from 'react'
+import {useStyles, ThemeProvider} from 'react-jss'
+
+const styles = theme => ({
+  button: {
+    background: theme.colorPrimary
+  },
+  label: {
+    fontWeight: 'bold'
+  }
+})
+
+const Button = ({children, theme = {}, ...props}) => {
+  const classes = useStyles(styles, {theme, ...props})
+  return (
+    <button className={classes.button}>
+      <span className={classes.label}>{children}</span>
+    </button>
+  )
+}
+
+const theme = {
+  colorPrimary: 'green'
+}
+
+const componentTheme = {
+  colorPrimary: 'blue'
+}
+
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <Button>I am a button with green background</Button>
+    <Button theme={componentTheme}>I am a button with blue background</Button>
+  </ThemeProvider>
+)
+```
+
 ## Using custom Theming Context
 
 Use _namespaced_ themes so that a set of UI components gets no conflicts with another set of UI components from a different library also using `react-jss` or in case you want to use the same theme from another context that is already used in your app.

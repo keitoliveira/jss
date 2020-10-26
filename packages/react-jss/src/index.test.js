@@ -9,7 +9,8 @@ import {
   withTheme,
   createTheming,
   createUseStyles,
-  useTheme
+  useTheme,
+  useStyles
 } from '.'
 
 describe('React-JSS: exports', () => {
@@ -51,5 +52,9 @@ describe('React-JSS: exports', () => {
 
   it('should export useTheme', () => {
     expect(useTheme).to.be.a(Function)
+  })
+
+  it('should export useStyles', () => {
+    expect(useStyles).to.be.a(Function)
   })
 })

@@ -10,6 +10,7 @@ export {default as JssContext} from './JssContext'
 export {default as styled} from './styled'
 export {default as jsx, create as createJsx} from './jsx'
 export {withStyles}
+export {default as useStyles} from './useStyles'
 
 // Kept for backwards compatibility.
 export default withStyles
